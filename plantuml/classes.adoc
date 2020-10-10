@@ -36,7 +36,7 @@ class Turn
 class Player
 
 
-Mastermind *--> "1.. 2n" Turn
+Mastermind *--> "2.. 2n" Turn
 Mastermind *--> "2" Player
 Mastermind *--> Board
 
