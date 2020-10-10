@@ -1,0 +1,178 @@
+@startuml
+
+title Mastermind - Estado final de turno (código adivinado)
+
+'OBJECTS'
+object ":Board" as Board
+object ":CodeMaker" as CodeMaker
+object ":CodeBreaker" as CodeBreaker
+together {
+
+    together {
+        object "Test01:Test" as Test01
+        object ":Result" as Result01
+        object ":WhiteMatch" as WhiteMatch01
+        object "Test02:Test" as Test02
+        object ":Result" as Result02
+        object ":WhiteMatch" as WhiteMatch02
+        object "Test03:Test" as Test03
+        object ":Result" as Result03
+        object ":WhiteMatch" as WhiteMatch03
+    }
+
+    together {
+
+        object "Test04:Test" as Test04
+        object ":Token" as Token041 {
+            position = 1
+            colour = "Red"
+        }
+        object ":Token" as Token042 {
+            position = 2
+            colour = "Blue"
+        }
+        object ":Token" as Token043 {
+            position = 3
+            colour = "Black"
+        }
+        object ":Token" as Token044 {
+            position = 4
+            colour = "Blue"
+        }
+        object ":Token" as Token045 {
+            position = 5
+            colour = "Yellow"
+        }
+        object ":Result" as Result04
+        object ":BlackMatch" as BlackMatch04
+        object ":WhiteMatch" as WhiteMatch04
+    }
+    together {
+        object "Test05:Test" as Test05
+        object ":Token" as Token051 {
+            position = 1
+            colour = "Red"
+        }
+        object ":Token" as Token052 {
+            position = 2
+            colour = "Blue"
+        }
+        object ":Token" as Token053 {
+            position = 3
+            colour = "Black"
+        }
+        object ":Token" as Token054 {
+            position = 4
+            colour = "Blue"
+        }
+        object ":Token" as Token055 {
+            position = 5
+            colour = "Yellow"
+        }
+        object ":Result" as Result05
+        object ":BlackMatch" as BlackMatch05
+    }
+
+    together {
+        object ":Code" as Code
+        object ":Token" as Token001 {
+            position = 1
+            colour = "Red"
+        }
+        object ":Token" as Token002 {
+            position = 2
+            colour = "Blue"
+        }
+        object ":Token" as Token003 {
+            position = 3
+            colour = "Black"
+        }
+        object ":Token" as Token004 {
+            position = 4
+            colour = "Blue"
+        }
+        object ":Token" as Token005 {
+            position = 5
+            colour = "Yellow"
+        }
+    }
+}
+
+
+
+'RELATIONSHIPS'
+Board --> Code
+Board --> Test01
+Board --> Test02
+Board --> Test03
+Board --> Test04
+Board --> Test05
+
+CodeMaker --> Code
+CodeBreaker --> Test01
+CodeBreaker --> Test02
+CodeBreaker --> Test03
+CodeBreaker --> Test04
+CodeBreaker --> Test05
+CodeMaker ..> Result01
+CodeMaker ..> Result02
+CodeMaker ..> Result03
+CodeMaker ..> Result04
+CodeMaker ..> Result05
+
+'TEST LINE 01 RELATIONSHIPS'
+Test01 --> Result01
+Result01 *--> "1" WhiteMatch01
+
+'TEST LINE 02 RELATIONSHIPS'
+Test02 --> Result02
+Result02 *--> "3" WhiteMatch02
+
+'TEST LINE 03 RELATIONSHIPS'
+Test03 --> Result03
+Result03 *--> "3" WhiteMatch03
+
+'TEST LINE 04 RELATIONSHIPS'
+Test04 *-right-> Token041
+Test04 *-right-> Token042
+Test04 *-right-> Token043
+Test04 *-right-> Token044
+Test04 *-right-> Token045
+
+Test04 --> Result04
+Result04 *--> "3" BlackMatch04
+Result04 *--> "2" WhiteMatch04
+
+
+'TEST LINE 05 RELATIONSHIPS'
+
+Test05 *-right-> Token051
+Test05 *-right-> Token052
+Test05 *-right-> Token053
+Test05 *-right-> Token054
+Test05 *-right-> Token055
+
+Test05 --> Result05
+Result05 *--> "5" BlackMatch05
+
+'CODE LINE RELATIONSHIPS'
+
+Code *-right-> Token001
+Code *-right-> Token002
+Code *-right-> Token003
+Code *-right-> Token004
+Code *-right-> Token005
+
+note as N1
+Tests 1, 2, 3 no detallados
+para mejor legibilidad
+end note
+
+'FORCE LAYOUT'
+Code -[hidden]-> Test03
+Test01 -[hidden]-> Test04
+WhiteMatch03 -[hidden]-> Test04
+WhiteMatch04 -[hidden]-> Test05
+Test03 -[hidden]- N1
+
+@enduml

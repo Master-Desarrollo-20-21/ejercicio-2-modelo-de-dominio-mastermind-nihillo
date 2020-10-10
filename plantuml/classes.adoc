@@ -1,0 +1,84 @@
+@startuml
+
+title Mastermind - Diagrama de clases
+
+class Mastermind
+class Board
+class Position
+together {
+    together {
+        class Codemaker
+        class Code
+    }
+    together {
+        class Codebreaker
+        class Test
+    }
+}
+class Token
+class Colour
+class Red
+class Blue
+class Green
+class Yellow
+class Pink
+class Brown
+class Black
+class White
+class Test
+class Result
+class Match
+class WhiteMatch
+class BlackMatch
+class Score
+class Point
+class Turn
+class Player
+
+
+Mastermind *--> "1.. 2n" Turn
+Mastermind *--> "2" Player
+Mastermind *--> Board
+
+Board o--> "1" Code
+Board o--> Test
+Board o--> Result
+
+
+Code o--> "5" Token
+Test o--> "5" Token
+Token *--> "1" Colour
+Token --> Position
+Colour <|-- Red
+Colour <|-- Blue
+Colour <|-- Green
+Colour <|-- Yellow
+Colour <|-- Pink
+Colour <|-- Brown
+Colour <|-- Black
+Colour <|-- White
+
+Test --> Result
+Test ..> "1" Point
+
+Result *--> "0.. 5" Match 
+
+Match <|-- WhiteMatch
+Match <|-- BlackMatch
+
+Player <|-- Codemaker
+Player <|-- Codebreaker
+
+Turn o-->  Codemaker
+Turn o-->  Codebreaker
+
+Codemaker --> "1" Code
+Codebreaker --> "1.. 15" Test
+Codemaker ..> Result : returns
+
+Player *--> Score
+Codemaker --> Point
+Score o--> Point
+
+
+@enduml

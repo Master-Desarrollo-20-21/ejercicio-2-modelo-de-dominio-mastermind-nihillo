@@ -1,0 +1,23 @@
+@startuml
+
+title Mastermind - Diagrama de estados
+state B as " "
+state C as " "
+state D as " "
+state E as " "
+state F as " "
+state G as " "
+state H as " "
+
+[*] --> B: setPlayerRoles
+B --> C : setCode
+C --> D : test
+D --> E : returnResult
+E --> F : [allTokensMatchColourAndPosition]
+E --> D : test
+F --> G : addPointsToCodemakerScore
+G --> B : switchPlayerRoles
+G --> H : [allTurnsPlayed]
+H --> [*] : getWinner
+
+@enduml
