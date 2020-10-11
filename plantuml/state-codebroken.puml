@@ -37,11 +37,11 @@ together {
         }
         object ":Token" as Token044 {
             position = 4
-            colour = "Blue"
+            colour = "Yellow"
         }
         object ":Token" as Token045 {
             position = 5
-            colour = "Yellow"
+            colour = "Blue"
         }
         object ":Result" as Result04
         object ":BlackMatch" as BlackMatch04
